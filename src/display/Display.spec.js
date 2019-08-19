@@ -42,7 +42,22 @@ describe('<Display />', () => {
         expect(queryByText(/locked/i)).toBeTruthy();
     })
 
-    it('should have the "red-led" class when "locked" or closed"', () => {
-
+    it('should have the "red-led" class when "locked"', () => {
+        const { getByTestId } = render(<Display locked={true} />);
+        expect(getByTestId('locked-display').classList.contains('red-led'));  
+    })
+    it('should have the "red-led" class when "closed"', () => {
+        const { getByTestId } = render(<Display closed={true} />);
+        expect(getByTestId('closed-display').classList.contains('red-led'));  
+    })
+    
+    it('should have the "green-led" class when "unlocked"', () => {
+        const { getByTestId } = render(<Display locked={false} />);
+        expect(getByTestId('locked-display').classList.contains('green-led'));  
+    })
+    
+    it('should have the "green-led" class when "open"', () => {
+        const { getByTestId } = render(<Display closed={false} />);
+        expect(getByTestId('closed-display').classList.contains('green-led'));  
     })
 });
