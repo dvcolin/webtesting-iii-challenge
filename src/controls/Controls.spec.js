@@ -13,7 +13,8 @@ describe('<Controls />', () => {
     })
 
     it('should toggle open/close when open button is clicked', () => {
-        const { getByTestId } = render(<Controls />);
+        const toggleClosed = jest.fn();
+        const { getByTestId } = render(<Controls toggleClosed={toggleClosed} />);
         const openButton = getByTestId('open-button');
         
         fireEvent.click(openButton);
