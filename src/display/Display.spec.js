@@ -22,14 +22,27 @@ describe('<Display />', () => {
 
     })
 
-    it('displays "Closed" if closed prop is true and "Open" if otherwise', () => {
+    it('displays "Open" if closed prop is false', () => {
+        const { queryByText } = render(<Display closed={false} />);
+        expect(queryByText(/open/i)).toBeTruthy();
+    })
 
-        const mockClosed = jest.fn();
+    it('displays "Closed" if closed prop is true', () => {
+        const { queryByText } = render(<Display closed={true} />);
+        expect(queryByText(/closed/i)).toBeTruthy();
+    })
+    
+    it('displays "Unlocked" if locked prop is false', () => {
+        const { queryByText } = render(<Display locked={false} />);
+        expect(queryByText(/unlocked/i)).toBeTruthy();
+    })
 
-        mockClosed.mockReturnValueOnce(true);
+    it('displays "Locked" if locked prop is true', () => {
+        const { queryByText } = render(<Display locked={true} />);
+        expect(queryByText(/locked/i)).toBeTruthy();
+    })
 
-        const { getByTestId } = render(<Display locked={false} closed={mockClosed} />);
-        expect(getByTestId('closed-display').textContent).toBe('Closed');
+    it('should have the "red-led" class when "locked" or closed"', () => {
 
     })
 });
