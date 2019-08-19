@@ -31,7 +31,7 @@ Array [
     </button>
     <button
       className="toggle-btn"
-      data-testid="open-button"
+      data-testid="close-button"
       disabled={false}
       onClick={[Function]}
     >

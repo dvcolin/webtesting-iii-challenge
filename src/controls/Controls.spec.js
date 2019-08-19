@@ -12,18 +12,4 @@ describe('<Controls />', () => {
         expect(tree.toJSON()).toMatchSnapshot();
     })
 
-    it('should toggle open/close when open button is clicked', () => {
-        const toggleClosed = jest.fn();
-        const { getByTestId } = render(<Controls toggleClosed={toggleClosed} />);
-        const openButton = getByTestId('open-button');
-        
-        fireEvent.click(openButton);
-    })
-    
-    it('should toggle lock/unlock when lock button is clicked', () => {
-        const { getByTestId } = render(<Controls />);
-        const lockButton = getByTestId('lock-button');
-        
-        fireEvent.click(lockButton);
-    })
 });
