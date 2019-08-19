@@ -12,4 +12,11 @@ describe('<Controls />', () => {
         expect(tree.toJSON()).toMatchSnapshot();
     })
 
+    it('lock button should be disabled when "locked" prop is true', () => {
+        const { getByText } = render(<Controls locked={true} closed={true} />);
+        
+        const lockButton = getByText(/lock gate/i)
+        expect(lockButton.hasAttribute('disabled')).toBe(true)
+    })
+
 });
